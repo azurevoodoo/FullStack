@@ -1,3 +1,5 @@
+var solution = "./src/FullStack.sln";
+
 Task("Clean")
     .Does(
         ()=>{
@@ -8,7 +10,11 @@ Task("Clean")
 Task("Restore")
     .Does(
         ()=>{
-            Information("Restore");
+            DotNetCoreRestore(solution,
+            new DotNetCoreRestoreSettings {
+                
+            }
+            );
         }
     );
 
@@ -17,7 +23,7 @@ Task("Build")
     .IsDependentOn("Restore")
     .Does(
         ()=>{
-            Information("Build");
+            DotNetCoreBuild(solution);
         }
     );
 
