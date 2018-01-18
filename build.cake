@@ -1,9 +1,13 @@
 var solution = "./src/FullStack.sln";
 
+var target = Argument("target", "Package");
+
 Task("Clean")
     .Does(
         ()=>{
-            Information("Clean");
+            CleanDirectories(
+                "./src/**/obj/*.*"
+            );
         }
     );
 
@@ -44,4 +48,4 @@ Task("Package")
     );
 
 
-RunTarget("Package");
+RunTarget(target);
